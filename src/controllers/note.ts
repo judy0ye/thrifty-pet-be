@@ -13,7 +13,7 @@ const createNote = async (req: Request, res: Response) => {
     const savedNote = await note.save();
     res.status(201).json({ note: savedNote });
   } catch (error) {
-      if (error === 'ValidationError') {
+      if (error.name === 'ValidationError') {
         res.status(422).json({error: error.message})
       } else {
         res.status(500).json({ error });
