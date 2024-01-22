@@ -25,7 +25,7 @@ cron.schedule('0 0 * * *', async () => {
   }
 });
 
-const app = express()
+export const app = express()
 
 app.use(cors())
 app.use(compression())
@@ -38,4 +38,3 @@ app.listen(process.env.PORT, () => {
   console.log(`Server is running on http://localhost:${process.env.PORT}`)
 })
 
-export app
