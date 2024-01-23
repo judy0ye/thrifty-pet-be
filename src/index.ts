@@ -25,8 +25,6 @@ cron.schedule('* */10 * * * *', async () => {
       console.log('Reconnected to MongoDB')
     }
     await controllers.getProductsPeriodically();
-    await mongoose.disconnect();
-    console.log('Mongoose connection closed');
   } catch (error) {
     console.error('Cron job error:', error);
   }
