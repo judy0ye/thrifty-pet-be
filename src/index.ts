@@ -39,7 +39,9 @@ app.use(express.json())
 app.use('/api/v1/notes', noteRoutes)
 app.use('/api/v1/products', productRoutes)
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on http://localhost:${process.env.PORT}`)
+const port = process.env.PORT || 8080
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`)
 })
 
