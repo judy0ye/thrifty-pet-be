@@ -30,7 +30,7 @@ cron.schedule('* */10 * * * *', async () => {
   }
 });
 
-export const app = express()
+const app = express()
 
 app.use(cors())
 app.use(compression())
