@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_URI)
   console.log(`failed to connect to mongoose: ${error}`)
 })
 
-cron.schedule('0 0 * * *', async () => {
+cron.schedule('0 * * * *', async () => {
   try {
     console.log('Cron job is running');
     await controllers.getProductsPeriodically();
