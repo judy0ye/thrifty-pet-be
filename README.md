@@ -54,4 +54,5 @@ This app is the back-end server for [thrifty-pet-fe](https://github.com/judy0ye/
   <img src="https://img.shields.io/badge/Cheerio-F88900?logo=cheerio&logoColor=fff&style=for-the-badge" /> 
   <img src="https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=fff&style=for-the-badge" /> 
   <img src="https://img.shields.io/badge/Mongoose-800?logo=mongoose&logoColor=fff&style=for-the-badge" /> 
+  <img src="https://img.shields.io/badge/Heroku-430098?logo=heroku&logoColor=fff&style=for-the-badge" /> 
 </div>
