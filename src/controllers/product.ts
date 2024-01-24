@@ -9,10 +9,6 @@ const createProduct = async (req: Request, res: Response) => {
 
     const scrapedProduct = await scrapeOneProduct(productUrl)
 
-    if (!scrapedProduct) {
-      return
-    }
-
     let updatedPrice = scrapedProduct
     const existingProduct = await ProductModel.findOne({ url: scrapedProduct.url })
 

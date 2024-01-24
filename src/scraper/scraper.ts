@@ -13,7 +13,7 @@ const scrapeOneProduct = async (productUrl: string) => {
     page.setDefaultNavigationTimeout(2 * 60 * 1000)
 
     await page.goto(productUrl)
-    await page.waitForSelector('.styles_mainCarouselImage__wj_bU')
+    
     const content = await page.content()
 
     const $ = cheerio.load(content)
@@ -23,7 +23,7 @@ const scrapeOneProduct = async (productUrl: string) => {
       const image = targetContainer.find('img').first().attr('src')
       const currentPrice = targetContainer.find('.kib-product-price').text().trim().match(/\d+\.\d+/)
       const originalPriceElement = targetContainer.find('.kib-product-price--strikethrough')
-      const originalPrice = originalPriceElement.length > 0 ? originalPriceElement.text().trim().replace(/[^\d.]/g, '') : null;
+      const originalPrice = originalPriceElement?.length > 0 ? originalPriceElement.text().trim().replace(/[^\d.]/g, '') : null;
       const miscInfoArray: string[] = [];
       targetContainer.find('h3').each((index, element) => {
         const miscInfoText = $(element).text().trim();

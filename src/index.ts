@@ -19,14 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
 cron.schedule('0 0 * * *', async () => {
   try {
     console.log('Cron job is running');
-    if (mongoose.connection.readyState !== 1 && mongoose.connection.readyState !== 2) {
-      console.log('MongoDB connection is not open. Reconnecting...')
-      await mongoose.connect(process.env.MONGO_URI)
-      console.log('Reconnected to MongoDB')
-    }
     await controllers.getProductsPeriodically();
-    await mongoose.disconnect();
-    console.log('Mongoose connection closed');
   } catch (error) {
     console.error('Cron job error:', error);
   }
