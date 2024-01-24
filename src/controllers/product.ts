@@ -26,8 +26,7 @@ const createProduct = async (req: Request, res: Response) => {
         averagePrice: calculateAveragePrice(updatedPriceHistory),
         currentPrice: scrapedProduct.currentPrice
       }
-      console.log('New Product', updatedPrice)
-      console.log('updated', scrapedProduct.currentPrice)
+
       const updatedProduct = await ProductModel.findOneAndUpdate({ url: scrapedProduct.url },
         updatedPrice,
         { upsert: true, new: true }

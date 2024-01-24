@@ -33,8 +33,9 @@ const calculateAveragePrice = (priceArray: priceArrayType[]) => {
   }, 0)
 
   const avgPrice = sum / priceArray.length
+  const avgPriceWithTwoDecimals = parseFloat(avgPrice.toFixed(2));
 
-  return avgPrice
+  return avgPriceWithTwoDecimals
 }
 
 

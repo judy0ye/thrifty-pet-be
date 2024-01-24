@@ -21,17 +21,20 @@ const scrapeOneProduct = async (productUrl: string) => {
     if (targetContainer.length > 0) {
       const title = targetContainer.find('h1').text().trim()
       const image = targetContainer.find('img').first().attr('src')
-      // const currentPrice = targetContainer.find('.kib-product-price').text().trim().match(/\d+\.\d+/)
-      const rawCurrentPrice = targetContainer.find('.kib-product-price').text().trim();
-      const cleanCurrentPrice = rawCurrentPrice.replace(/[^\d.]/g, '');
-      const currentPrice = cleanCurrentPrice ? Number(cleanCurrentPrice) : null;
-      const originalPriceElement = targetContainer.find('.kib-product-price--strikethrough')
+      const rawCurrentPrice = targetContainer.find('.kib-product-price--xl').text().trim().match(/\d+\.\d+/)
+      const currentPrice = rawCurrentPrice ? Number(rawCurrentPrice) : null;
+      const originalPriceElement = targetContainer.find('.styles_wasPrice__S8CD5')
       const originalPrice = originalPriceElement?.length > 0 ? originalPriceElement.text().trim().replace(/[^\d.]/g, '') : null;
       const miscInfoArray: string[] = [];
       targetContainer.find('h3').each((index, element) => {
         const miscInfoText = $(element).text().trim();
         miscInfoArray.push(miscInfoText);
       });
+
+      // console.log('raw', rawCurrentPrice)
+      // console.log('currentPrice', currentPrice)
+      // console.log('originalPriceElement', originalPriceElement)
+      // console.log('originalPrice', originalPrice)
       const uniqueSetOnly = new Set(miscInfoArray)
       const uniqueMiscInfoArray = [...uniqueSetOnly]
       const productData = {
