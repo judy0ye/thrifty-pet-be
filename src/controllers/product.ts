@@ -23,9 +23,11 @@ const createProduct = async (req: Request, res: Response) => {
         priceHistory: updatedPriceHistory,
         lowestPrice: calculateLowestPrice(updatedPriceHistory),
         highestPrice: calculateHighestPrice(updatedPriceHistory),
-        averagePrice: calculateAveragePrice(updatedPriceHistory)
+        averagePrice: calculateAveragePrice(updatedPriceHistory),
+        currentPrice: scrapedProduct.currentPrice
       }
-
+      console.log('New Product', updatedPrice)
+      console.log('updated', scrapedProduct.currentPrice)
       const updatedProduct = await ProductModel.findOneAndUpdate({ url: scrapedProduct.url },
         updatedPrice,
         { upsert: true, new: true }
@@ -68,7 +70,8 @@ const getProductsPeriodically = async () => {
           priceHistory: updatedPriceHistory,
           lowestPrice: calculateLowestPrice(updatedPriceHistory),
           highestPrice: calculateHighestPrice(updatedPriceHistory),
-          averagePrice: calculateAveragePrice(updatedPriceHistory)
+          averagePrice: calculateAveragePrice(updatedPriceHistory),
+          currentPrice: newProduct.currentPrice
         }
 
         const updatedProduct = await ProductModel.findOneAndUpdate(
