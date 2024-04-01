@@ -13,7 +13,7 @@ const scrapeOneProduct = async (productUrl: string) => {
     page.setDefaultNavigationTimeout(2 * 60 * 1000)
 
     await page.goto(productUrl)
-    
+    await page.waitForNavigation(); 
     const content = await page.content()
 
     const $ = cheerio.load(content)
