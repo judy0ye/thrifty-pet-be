@@ -5,8 +5,8 @@ import mongoose from 'mongoose';
 import noteRoutes from './routes/note'
 import productRoutes from './routes/product'
 import 'dotenv/config'
-import cron from 'node-cron'
-import controllers from './controllers/product'
+// import cron from 'node-cron'
+// import controllers from './controllers/product'
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
@@ -16,14 +16,14 @@ mongoose.connect(process.env.MONGO_URI)
   console.log(`failed to connect to mongoose: ${error}`)
 })
 
-cron.schedule('0 0 * * *', async () => {
-  try {
-    console.log('Cron job is running');
-    await controllers.getProductsPeriodically();
-  } catch (error) {
-    console.error('Cron job error:', error);
-  }
-});
+// cron.schedule('0 0 * * *', async () => {
+//   try {
+//     console.log('Cron job is running');
+//     await controllers.getProductsPeriodically();
+//   } catch (error) {
+//     console.error('Cron job error:', error);
+//   }
+// });
 
 const app = express()
 
